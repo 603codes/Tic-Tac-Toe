@@ -43,9 +43,9 @@ body{
     background-color: var(--cell);
     color: var(--text);
     border-radius: 10px;
-    transition: 0.3s;
     border: none;
     padding: 0;
+    transition: background-color 0.5s, color 0.5s;
 }
 
 #board{
@@ -74,3 +74,18 @@ button{
     transition: 0.3s;
 }
 
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.icon-button {
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    font-size: 20px;
+    display: inline-grid;
+    place-items: center;
+}
