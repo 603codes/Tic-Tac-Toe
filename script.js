@@ -6,6 +6,7 @@ board = [
 
 current = "X"
 gameOver = false
+moves = 0
 
 cells = document.querySelectorAll(".cell")
 statusText = document.querySelector("#status")
@@ -24,6 +25,18 @@ const winningCombinations = [
     [2, 4, 6]
 ]
 
+function checkWin(player) {
+
+    for (const combination of winningCombinations) {
+        const [a, b, c] = combination;
+
+        if (board[a] === player && board[b] === player && board[c] === player) {
+            return true;
+        }
+    }
+    return false;
+}
+
 cells.forEach((cell, index) => {
     cell.addEventListener("click", () => {
         if (board[index] !== "" || gameOver) {
@@ -32,24 +45,24 @@ cells.forEach((cell, index) => {
 
         board[index] = current
         cell.textContent = current
-        // Win Detection later
+        moves++;
+        if (checkWin(current)) {
+            statusText.textContent = "Player " + current + " wins!"
+            gameOver = true
+            return
+        }
+        if (moves >= 9) {
+            statusText.textContent = "It's a draw!"
+            gameOver = true
+            return
+        }
         if (current === "X") {
             current = "O"
         } else {
             current = "X"
         }
         statusText.textContent = "Player " + current + "'s turn"
+        
     })
 })
 
-function checkWin(player) {
-
-    for (const combination of winningCombinations) {
-        [a, b, c] = combination;
-
-        if (board[a] === player && board[b] === player && board[c] === player) {
-            return true;
-        }
-    }
-    return false;
-}
