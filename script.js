@@ -82,9 +82,9 @@ function checkWin(player) {
         const [a, b, c] = combination;
 
         if (board[a] === player && board[b] === player && board[c] === player) {
-            cells[a].style.backgroundColor = "red"
-            cells[b].style.backgroundColor = "red"
-            cells[c].style.backgroundColor = "red"
+            cells[a].style.backgroundColor = "green"
+            cells[b].style.backgroundColor = "green"
+            cells[c].style.backgroundColor = "green"
 
             cells[a].style.color = "white"
             cells[b].style.color = "white"
