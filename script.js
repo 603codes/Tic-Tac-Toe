@@ -1,3 +1,4 @@
+// Board Declarations
 board = [
     "", "", "",
     "", "", "",
@@ -16,6 +17,7 @@ let soundEnabled = true
 let audioContext
 let masterGain
 
+// Sound Functions (Took help with AI to create this)
 function playTone(frequency, duration, startDelay = 0) {
     if (!soundEnabled) {
         return
@@ -62,7 +64,7 @@ function playEndSound(isWin) {
         playTone(330, 0.3, 0.18)
     }
 }
-
+// These are winning combinations.
 const winningCombinations = [
     [0, 1, 2],
     [3, 4, 5],
@@ -75,7 +77,7 @@ const winningCombinations = [
     [0, 4, 8],
     [2, 4, 6]
 ]
-
+//This function checks winner and also animations
 function checkWin(player) {
 
     for (const combination of winningCombinations) {
@@ -94,7 +96,7 @@ function checkWin(player) {
     }
     return false;
 }
-
+// This function checks for a draw and also takes care of moves
 cells.forEach((cell, index) => {
     cell.addEventListener("click", () => {
         if (board[index] !== "" || gameOver) {
