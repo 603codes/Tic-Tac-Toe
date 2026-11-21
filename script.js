@@ -48,6 +48,7 @@ cells.forEach((cell, index) => {
         moves++;
         if (checkWin(current)) {
             statusText.textContent = "Player " + current + " wins!"
+   
             gameOver = true
             return
         }
@@ -64,5 +65,27 @@ cells.forEach((cell, index) => {
         statusText.textContent = "Player " + current + "'s turn"
         
     })
+})
+
+const themeToggle = document.querySelector("#themetoggle");
+themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    themeToggle.textContent = (themeToggle.textContent == "Light Mode") ? "Dark Mode" : "Light Mode";
+});
+
+restart.addEventListener("click", () => {
+    cells.forEach((cell) => {
+        cell.textContent = ""
+    })
+    board = [
+        "", "", "",
+        "", "", "",
+        "", "", ""
+    ]
+    statusText.textContent = "Player X's turn"
+
+current = "X"
+gameOver = false
+moves = 0
 })
 
